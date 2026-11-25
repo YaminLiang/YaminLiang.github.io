@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yamin Liang — Medical B-end interface, design systems</title>
+<meta name="description" content="Yamin Liang (梁亚敏). Design Engineer / visual-interaction designer. 12 years of B-end product design, 6 years in medical IT. Complex clinical interfaces, design systems, concept work on a bedside robot for hospice care.">
+<meta property="og:title" content="Yamin Liang — Medical B-end interface, design systems">
+<meta property="og:description" content="Interfaces where a missed detail becomes a clinical risk.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F5D50'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='17' fill='%23F2F0EA' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+  :root{
+    --paper:#F2F0EA;
+    --ink:#14150F;
+    --muted:#6B6A61;
+    --line:#D8D3C6;
+    --accent:#1F5D50;
+    --max:1000px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:var(--paper)}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  @media (max-width:640px){ .wrap{padding:0 20px} }
+
+  /* ---------- header ---------- */
+  header{border-bottom:1px solid var(--line)}
+  .topbar{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:16px;padding:22px 0 18px;flex-wrap:wrap;
+  }
+  .brand{font-weight:600;letter-spacing:-.01em;font-size:17px}
+  .brand span{color:var(--muted);font-weight:400;margin-left:10px;font-size:14px}
+  .topmeta{font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 64px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    display:flex;align-items:center;gap:12px;margin-bottom:28px;
+  }
+  .eyebrow::after{content:"";height:1px;background:var(--line);flex:1}
+  h1{
+    margin:0;
+    font-family:"Noto Serif SC",Georgia,"Songti SC",serif;
+    font-weight:500;
+    font-size:clamp(34px,5.4vw,56px);
+    line-height:1.22;
+    letter-spacing:-.015em;
+    max-width:21ch;
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .hero-sub{margin:32px 0 0;max-width:56ch;color:#3B3A33;font-size:17px}
+  .hero-cn{
+    margin-top:14px;font-family:"Noto Sans SC",sans-serif;font-weight:300;
+    color:var(--muted);font-size:15px;
+  }
+
+  /* ---------- meta strip ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}
+  .strip div{padding:20px 0}
+  .strip div + div{padding-left:24px;border-left:1px solid var(--line)}
+  .strip .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+  .strip .v{font-size:14px}
+  @media (max-width:640px){
+    .strip{grid-template-columns:1fr}
+    .strip div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:44px}
+  .sec-no{font-size:12px;color:var(--accent);letter-spacing:.16em}
+  .sec-title{font-family:"Noto Serif SC",Georgia,serif;font-size:26px;font-weight:500;margin:0}
+  .sec-note{margin-left:auto;font-size:12px;color:var(--muted)}
+
+  /* ---------- work ---------- */
+  .work{border-top:1px solid var(--line)}
+  .item{
+    display:grid;grid-template-columns:56px 1fr 160px;gap:24px;
+    padding:34px 0;border-bottom:1px solid var(--line);
+    text-decoration:none;color:inherit;
+    transition:background .25s ease, padding-left .25s ease;
+  }
+  .item:hover{background:#EDEAE1;padding-left:12px}
+  .item .no{font-size:12px;color:var(--muted);padding-top:6px;letter-spacing:.1em}
+  .item h3{margin:0 0 10px;font-size:20px;font-weight:600;letter-spacing:-.01em}
+  .item p{margin:0;color:#43423A;font-size:15px;max-width:60ch}
+  .item .cn{display:block;margin-top:8px;color:var(--muted);font-size:13px;font-family:"Noto Sans SC",sans-serif}
+  .item .role{font-size:12px;color:var(--muted);text-align:right;line-height:1.8}
+  .tag{
+    display:inline-block;border:1px solid var(--line);border-radius:999px;
+    padding:2px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  }
+  @media (max-width:720px){
+    .item{grid-template-columns:1fr;gap:10px}
+    .item .no{padding-top:0}
+    .item .role{text-align:left}
+  }
+
+  /* ---------- method ---------- */
+  .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+  .m{background:var(--paper);padding:28px 26px}
+  .m .mk{font-size:11px;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:block;text-transform:uppercase}
+  .m h4{margin:0 0 10px;font-size:16px;font-weight:600;line-height:1.4}
+  .m p{margin:0;font-size:14px;color:#4A493F;line-height:1.75}
+  @media (max-width:760px){ .method{grid-template-columns:1fr} }
+
+  /* ---------- contact ---------- */
+  .contact{border-top:1px solid var(--ink)}
+  .contact-inner{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;padding:56px 0 64px}
+  .contact h2{
+    margin:0;font-family:"Noto Serif SC",Georgia,serif;font-weight:500;
+    font-size:clamp(26px,3.4vw,34px);max-width:16ch;line-height:1.3;
+  }
+  .links{display:flex;flex-direction:column;gap:10px;font-size:14px}
+  .links a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease,color .2s ease}
+  .links a:hover{border-color:var(--accent);color:var(--accent)}
+  .links span{color:var(--muted);font-size:12px;margin-left:8px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:26px 0 46px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .foot p{margin:0;max-width:66ch}
+
+  /* ---------- entrance ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .fade{opacity:0;transform:translateY(10px);animation:rise .7s ease forwards}
+    .fade:nth-child(2){animation-delay:.08s}
+    .fade:nth-child(3){animation-delay:.16s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+
+  /* ---------- print ---------- */
+  @media print{
+    body{background:#fff}
+    header,.strip,.contact,.foot{display:none}
+    .item:hover{background:none;padding-left:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="brand">Yamin Liang <span>梁亚敏</span></div>
+    <div class="topmeta">Beijing &nbsp;/&nbsp; Portfolio 2026</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="eyebrow fade">Design Engineer · Medical B-end</div>
+    <div class="fade">
+      <h1>Most clinical software fails because it asks the <em>wrong person</em> to decide at the wrong moment.</h1>
+      <p class="hero-sub">
+        I design interfaces for hospitals and health systems: quality control, single-disease reporting,
+        core-rule supervision, insurance operations. Twelve years in B-end products, six of them inside
+        medical IT. My work starts from who has to judge what, at which step — not from a feature list.
+      </p>
+      <p class="hero-cn">医疗信息化 / 复杂 B 端 / 设计系统。做的是“一个人从入院到结算，同一件事在三个层级被处理”的那类界面。</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="strip fade">
+      <div><span class="k">Experience</span><span class="v">12 yrs B-end design · 6 yrs medical IT</span></div>
+      <div><span class="k">Focus</span><span class="v">Clinical workflow · design systems</span></div>
+      <div><span class="k">Status</span><span class="v">Open to contract &amp; remote projects</span></div>
+    </div>
+  </div>
+
+  <!-- ===== Section 01 · Selected work ===== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-no">01</span>
+        <h2 class="sec-title">Selected work</h2>
+        <span class="sec-note">Concept &amp; independent work only</span>
+      </div>
+
+      <div class="work">
+        <div class="item">
+          <span class="no">01</span>
+          <div>
+            <h3>RegionCare — hospital quality &amp; safety console</h3>
+            <p>
+              A fictional product built to test one question: how much can a single screen carry
+              before it starts lying? Thirty product lines, one shared state model, three levels
+              of judgement — department, hospital, region.
+            </p>
+            <span class="cn">虚构产品，用于验证“信息密度与判断责任”的边界，不含任何客户数据。</span>
+            <span style="display:block;margin-top:14px"><span class="tag">Concept</span></span>
+          </div>
+          <div class="role">IA · UI · state model<br>Figma, 2026</div>
+        </div>
+
+        <a class="item" href="https://github.com/YaminLiang/atease" target="_blank" rel="noopener">
+          <span class="no">02</span>
+          <div>
+            <h3>Jingban N-01 — bedside robot for hospice care</h3>
+            <p>
+              A concept for the hours when no one is in the room. Not a companion, not a chatbot:
+              a machine with a fixed scope, hard limits, and a written protocol for what it must
+              refuse to do. Specifications are public.
+            </p>
+            <span class="cn">安宁疗护床旁机器人设定：点位、分级、硬限制。刻意不做“陪伴”，只做“守着”。</span>
+            <span style="display:block;margin-top:14px"><span class="tag">Concept · Spec</span></span>
+          </div>
+          <div class="role">Product concept<br>Interaction spec<br>2025–2026</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 02 · Method ===== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-no">02</span>
+        <h2 class="sec-title">How I work</h2>
+      </div>
+      <div class="method">
+        <div class="m">
+          <span class="mk">Order first</span>
+          <h4>Sort by who decides, not by function</h4>
+          <p>Clinical systems are not feature collections. They are sequences of judgement. I map the sequence before drawing a single screen.</p>
+        </div>
+        <div class="m">
+          <span class="mk">One state model</span>
+          <h4>Thirty products, one grammar</h4>
+          <p>States, permissions and exception paths should be shared across product lines, or every team invents its own version of “abnormal”.</p>
+        </div>
+        <div class="m">
+          <span class="mk">Willing to subtract</span>
+          <h4>Density is not honesty</h4>
+          <p>Showing everything is a way to avoid deciding. I would rather cut a field than let a clinician guess what it means.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 03 · Contact ===== -->
+  <section class="contact">
+    <div class="wrap contact-inner">
+      <h2>If you are building something in medical, care or robotics — I would like to hear about it.</h2>
+      <div class="links">
+        <a href="mailto:13641062799@qq.com">13641062799@qq.com <span>email</span></a>
+        <a href="https://4kkumf6n50sb9.doubao.link/app/app_17h2f0x5u84" target="_blank" rel="noopener">Portfolio PDF · 8 pages <span>脱敏精选</span></a>
+        <a href="https://github.com/YaminLiang" target="_blank" rel="noopener">github.com/YaminLiang <span>specs &amp; notes</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>
+      All work shown here is concept or independent work. No client material, no patient data,
+      no screens reproduced from an employer's product.
+    </p>
+    <p>© 2026 Yamin Liang · Beijing</p>
+  </div>
+</footer>
+
+</body>
+</html>
